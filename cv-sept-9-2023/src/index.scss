@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap');
+
+
+// Variables
+$font-family: 'Poppins', Arial, sans-serif;
+$orange: #f87060;
+$dark-blue: #102542;
+$platinum: #cdd7d6;
+$khaki: #b3a394;
+$white: #fff;
+
+// Mixins
+@mixin img-wrapper($w: 100%, $h: auto, $br: 0rem, $of: cover, $op: center){
+   
+        width: $w;
+        height: $h;
+        overflow: hidden;
+        border-radius: $br;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: $of;
+            object-position: $op;
+        }
+    
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: $font-family;
+}
+
+
+
+section.home, section.skills, section.portfolio, section.contact{
+    min-height: 100vh;
+    .container{
+        max-width: 1320px;
+        margin-inline: auto;    
+        display: grid;
+        min-height: 100dvh;
+    }
+}
+
+section.home{
+    background: $platinum;
+    
+    .container{
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        place-content: center;
+    }
+    .img-wrapper{
+        @include img-wrapper($w: 100%, $h: auto, $br: 0rem, $of: cover, $op: center);
+    }
+}
+
+
+
+section.skills{
+    background: $khaki;
+}
+
+section.portfolio{
+    background: $dark-blue;
+}
+
+section.contact{
+    background: $dark-blue;
+}
