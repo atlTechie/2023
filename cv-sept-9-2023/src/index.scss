@@ -3,14 +3,28 @@
 
 // Variables
 $font-family: 'Poppins', Arial, sans-serif;
+$font-weight: 300;
+$line-height: 1.65;
+
 $orange: #f87060;
 $dark-blue: #102542;
 $platinum: #cdd7d6;
-$khaki: #b3a394;
+$teal: #087e8b;
 $white: #fff;
+$text-dark-bg: lighten($dark-blue, 65%);
+
+$container-padding: 1rem;
+$grid-gap: 1rem;
+
+$skills-section-bg: $dark-blue;
+$portfolio-section-bg: darken($dark-blue, 5%);
+$contact-section-bg: darken($dark-blue, 10%);
+
+$form-input-bg: darken($dark-blue, 15%);
+$form-input-text-color: lighten($dark-blue, 50%);
 
 // Mixins
-@mixin img-wrapper($w: 100%, $h: auto, $br: 0rem, $of: cover, $op: center){
+@mixin img-wrapper($w: 100%, $h: 200px, $br: 0rem, $of: cover, $op: center){
    
         width: $w;
         height: $h;
@@ -25,48 +39,369 @@ $white: #fff;
     
 }
 
+// Global Styling
+
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+html, body{
+    scroll-behavior: smooth;
+}
+
 body{
     font-family: $font-family;
+    font-weight: $font-weight;
+    line-height: $line-height;
+}
+
+/*Typography*/
+
+a{
+    transition: all .3s;
+    text-decoration: none;
+}
+
+ul li{
+    list-style: none;
+}
+
+.text-bold{
+    font-weight: 500;
+}
+
+span.highlighted-text{
+    background: $teal;
+    padding: 1rem;
+    display: inline-block;
+    color: $white;
+}
+
+section > .container > p{
+    font-size: 2.25rem;
+    color: $platinum;
+    margin-bottom: 2rem;
+ 
+}
+
+/*Navigation*/
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 1rem;
+    padding-block: 1rem;
+    max-width: 1320px;
+  
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.navbar .brand{
+    font-weight: 700;
+    color: $orange;
 }
 
 
 
-section.home, section.skills, section.portfolio, section.contact{
+ul.nav{
+    display: flex;
+}
+
+ul.nav .nav-item{
+    margin-right: 1rem;
+    &:last-child{
+        margin-right: 0;
+    }
+}
+
+/*Sections*/
+
+section{
+    padding-block: 5rem;
+    display: grid;
+    align-content: center;
+}
+
+
+/*Buttons*/
+button{
+    background: $orange;
+    color: $dark-blue;
+    padding: .575rem .75rem;
+    border-radius: .25rem;
+    border:1px solid transparent;
+    transition: all .3s;
+    cursor: pointer;
+    &:hover{
+        background: transparent;
+        color: $orange;
+        border: 1px solid $orange;
+    }
+}
+
+/*Forms*/
+.form-input{
+    font-family: $font-family!important;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+
+
+
+input[type="text"], input[type="email"], textarea{
+background: $form-input-bg;
+border: none;
+padding: .575rem .75rem;
+border-radius: .25rem;
+color: $form-input-text-color;
+}
+
+/*SECTIONS*/
+
+
+
+section.home, section.skills, section.contact{
     min-height: 100vh;
     .container{
         max-width: 1320px;
         margin-inline: auto;    
         display: grid;
         min-height: 100dvh;
+        padding-inline: $container-padding;
     }
 }
+
+
+/*Section - Home*/
 
 section.home{
     background: $platinum;
     
     .container{
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+       max-width:1320px;
+       width: 100%;
+       margin-inline: auto;
         place-content: center;
+        grid-gap: $grid-gap;
     }
     .img-wrapper{
         @include img-wrapper($w: 100%, $h: auto, $br: 0rem, $of: cover, $op: center);
     }
 }
 
+section.home .button-group{
+    max-width: 300px;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+}
+
+section.home .message-wrapper{
+    align-self: center;
+    h1{
+        font-size: 2.25rem;
+        line-height: 1.5;
+        font-weight: 300;
+    }
+    .byline{
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+    }
+}
+
+/*
+Skills Section
+*/
 
 
 section.skills{
-    background: $khaki;
+    background: $skills-section-bg;
+    color: $text-dark-bg;
 }
+
+.skills-grid{
+    display: grid;
+}
+.skillset{
+    background: lighten($skills-section-bg, 5%);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0px 6px 9px darken($dark-blue, 10%);
+}
+
+h4.skillset-title{
+    font-size: 1.5rem;
+    font-weight: 300;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.skillset-list-item{
+    margin-bottom: 1rem;
+    &:last-child{
+        margin-bottom: 0;
+    }
+    span.fa-check{
+        background: $orange;
+        padding: .25rem;
+        border-radius: .4rem;
+        margin-right: .5rem;
+        color: $dark-blue;
+    }
+    span.text-bold{
+        display:block;
+        margin-right: .5rem;
+    }
+}
+
+/*
+Portfolio Section
+*/
 
 section.portfolio{
-    background: $dark-blue;
+    display: grid;
+    margin: auto;
+    min-height: 100dvh;
+    padding-inline: $container-padding;
+    background: $portfolio-section-bg;
+    color: $text-dark-bg;
 }
 
-section.contact{
+
+.portfolio-item-grid{
+    display: grid;
+    grid-gap: 1rem;
+    width: 100%;
+}
+
+.portfolio-item{
+   
+    position: relative;
     background: $dark-blue;
+    padding: 1rem;
+
+}
+
+.portfolio-item-img{
+    @include img-wrapper($w: 100%, $h:300px, $br: 0rem, $of: cover, $op: center);
+    margin-bottom: .5rem;
+}
+
+.portfolio-item-meta{
+    display: flex;
+    justify-content: space-between;
+    font-size: .9rem;
+    margin-bottom: .5rem;
+    .category-icon, .date-icon{
+        margin-right: .25rem;
+    }
+    .category-label, .date-label{
+        font-weight: 200;
+    }
+    
+}
+
+.portfolio-item a{
+    color: $orange;
+
+
+    &:hover{
+        color: lighten($orange, 20%);
+    }
+}
+
+.portfolio-item-title{
+    display: block;
+    font-size: 1.25rem;
+    margin-right: 1rem;
+}
+
+.portfolio-item{
+    .case-study-link, .github-link{
+        font-size: .80rem;
+        
+    }
+    .case-study-link{
+        margin-right: .5rem;
+        border-right: 1px solid $orange;
+        padding-right: .5rem;
+    }
+}
+
+
+
+
+/*
+Contact Section
+*/
+
+
+section.contact{
+    background: $contact-section-bg;
+    color: $text-dark-bg;
+}
+
+section.contact .container-small{
+    max-width: 95vw;
+    margin-inline: auto;
+}
+
+p.contact-message{
+    color: $text-dark-bg!important;
+    font-size: 1rem!important;
+    margin-bottom: 1rem;
+}
+
+// Media Queries
+
+@media (min-width: 800px){
+    section.home, section.skills, section.portfolio, section.contact{
+        .container{
+            min-height:auto;
+        }
+    }
+section.home{
+    .container{
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+}
+
+section.skills{
+    padding-block:4rem;
+}
+
+.skills-grid{
+grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.skillset{
+    margin-inline: 1rem;
+}
+
+// Portfolio -- Tablet
+.portfolio-item-grid{
+grid-template-columns: repeat(2, 1fr);
+}
+
+// Contact -- Tablet
+section.contact .container-small{
+    max-width: 65vw;
+}
+
+}
+
+@media (min-width: 1200px){
+    section.contact .container-small{
+        max-width: 660px;
+    }
 }
