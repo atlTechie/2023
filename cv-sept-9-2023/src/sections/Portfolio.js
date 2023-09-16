@@ -5,7 +5,7 @@ function Portfolio() {
   return (
     <section className="portfolio" id="portfolio">
         <div className="container">
-        <p>Portfolio</p>
+        <p>Work</p>
         <div className='portfolio-item-grid'>
           <PortfolioGridItem/>
           <PortfolioGridItem/>

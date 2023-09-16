@@ -7,7 +7,7 @@ function Home() {
         <div className='message-wrapper'>
             <h1>Crafting Seamless <span className='highlighted-text'> Digital Experiences</span></h1>
             <p className='byline'><span class="text-bold">E. Wright</span> | Frontend Developer & UI/UX Designer</p>
-            <p>As a Frontend Developer and UI/UX Designer, my mission is to seamlessly blend technology and design to shape captivating digital experiences. I am committed to crafting visually appealing, user-friendly, and responsive web interfaces that leave a lasting impression and drive meaningful user engagement.</p>
+            <p>As a Frontend Developer and UI/UX Designer, I'm dedicated to seamlessly blending technology and design to create captivating, user-friendly, and engaging web interfaces.</p>
             <div className='button-group'>
                 <button className='button button-primary'>View Work</button>
                 <button className='button button-outline-primary'>Contact Me</button>

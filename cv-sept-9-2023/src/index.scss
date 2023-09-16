@@ -13,6 +13,10 @@ $teal: #087e8b;
 $white: #fff;
 $text-dark-bg: lighten($dark-blue, 65%);
 
+
+$app-width-mobile: 95vw;
+$app-width-tablet: 85vw;
+$app-width-desktop: 75vw;
 $container-padding: 1rem;
 $grid-gap: 1rem;
 
@@ -87,36 +91,65 @@ section > .container > p{
 }
 
 /*Navigation*/
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    padding-inline: 1rem;
-    padding-block: 1rem;
-    max-width: 1320px;
-  margin-inline: auto;
+header{
+    background: transparentize($color: $dark-blue, $amount: .25);
+    display: flex; 
+    justify-content: center;
     position: fixed;
     top:0;
     left: 0;
     right: 0;
     z-index: 9999;
 }
+.navbar{
+    display: flex;
+    flex-direction: column;
+    grid-gap:1rem;
+    justify-content: center;
+    text-align: center;
+    padding-inline: 1rem;
+    padding-block: 1rem;
+    width: $app-width-mobile;
+    
+  margin-inline: auto;
+    
+}
 
 .navbar .brand{
     font-weight: 700;
     color: $orange;
+    font-size: 1.5rem;
 }
 
 
 
 ul.nav{
     display: flex;
+    justify-content: center;
 }
 
 ul.nav .nav-item{
-    margin-right: 1rem;
+    margin-right: .25rem;
+    border: 1px solid transparent;
+    border-radius: .4rem;
+    padding: .375rem .75rem;
+    transition: all .3s;
     &:last-child{
         margin-right: 0;
     }
+}
+
+.navbar a.nav-link{
+    color: $white;
+    transition: all .3s;
+}
+
+.navbar li.nav-item:hover, .navbar li.nav-item.active{
+    border: 1px solid $orange;
+a{
+    color: $orange;
+}
+
 }
 
 /*Sections*/
@@ -169,16 +202,19 @@ color: $form-input-text-color;
 
 
 
-section.home, section.skills, section.contact{
+section.home, section.skills, section.portfolio, section.contact{
     min-height: 100vh;
     .container{
-        max-width: 1320px;
+        max-width: $app-width-mobile;
         margin-inline: auto;    
         display: grid;
         min-height: 100dvh;
         padding-inline: $container-padding;
+        padding-block: calc($container-padding * 4.5);
+        
     }
 }
+
 
 
 /*Section - Home*/
@@ -191,7 +227,7 @@ section.home{
     background-position: center;
     
     .container{
-       max-width:1320px;
+
        width: 100%;
        margin-inline: auto;
         place-content: center;
@@ -359,7 +395,7 @@ section.contact{
 }
 
 section.contact .container-small{
-    max-width: 95vw;
+    max-width: $app-width-mobile;
     margin-inline: auto;
 }
 
@@ -371,7 +407,24 @@ p.contact-message{
 
 // Media Queries
 
+@media (min-width: 500px){
+    .navbar{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
 @media (min-width: 800px){
+
+
+   
+    .navbar, section.home, section.skills, section.contact, section.portfolio{
+        .container{
+        width: 95vw;
+            padding-block: calc($container-padding * 2.5);
+        }
+    }
+
     section.home, section.skills, section.portfolio, section.contact{
         .container{
             min-height:auto;
@@ -408,6 +461,18 @@ section.contact .container-small{
 }
 
 @media (min-width: 1200px){
+    .navbar, section.home, section.skills, section.contact, section.portfolio{
+        .container{
+          width: 75vw;
+       
+        }
+    }
+    section.contact .container-small{
+        max-width: 660px;
+    }
+}
+@media (min-width: 1400px){
+
     section.contact .container-small{
         max-width: 660px;
     }

@@ -45,17 +45,14 @@ section > .container > p {
 }
 
 /*Navigation*/
-.navbar {
+header {
+  background: rgba(16, 37, 66, 0.75);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding-inline: 1rem;
-  padding-block: 1rem;
-  max-width: 1320px;
-  margin-inline: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -63,22 +60,63 @@ section > .container > p {
   z-index: 9999;
 }
 
+.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  grid-gap: 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+  width: 95vw;
+  margin-inline: auto;
+}
+
 .navbar .brand {
   font-weight: 700;
   color: #f87060;
+  font-size: 1.5rem;
 }
 
 ul.nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 ul.nav .nav-item {
-  margin-right: 1rem;
+  margin-right: 0.25rem;
+  border: 1px solid transparent;
+  border-radius: 0.4rem;
+  padding: 0.375rem 0.75rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 ul.nav .nav-item:last-child {
   margin-right: 0;
+}
+
+.navbar a.nav-link {
+  color: #fff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.navbar li.nav-item:hover, .navbar li.nav-item.active {
+  border: 1px solid #f87060;
+}
+.navbar li.nav-item:hover a, .navbar li.nav-item.active a {
+  color: #f87060;
 }
 
 /*Sections*/
@@ -131,15 +169,16 @@ input[type=text], input[type=email], textarea {
 }
 
 /*SECTIONS*/
-section.home, section.skills, section.contact {
+section.home, section.skills, section.portfolio, section.contact {
   min-height: 100vh;
 }
-section.home .container, section.skills .container, section.contact .container {
-  max-width: 1320px;
+section.home .container, section.skills .container, section.portfolio .container, section.contact .container {
+  max-width: 95vw;
   margin-inline: auto;
   display: grid;
   min-height: 100dvh;
   padding-inline: 1rem;
+  padding-block: 4.5rem;
 }
 
 /*Section - Home*/
@@ -151,7 +190,6 @@ section.home {
   background-position: center;
 }
 section.home .container {
-  max-width: 1320px;
   width: 100%;
   margin-inline: auto;
   place-content: center;
@@ -340,7 +378,22 @@ p.contact-message {
   margin-bottom: 1rem;
 }
 
+@media (min-width: 500px) {
+  .navbar {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
 @media (min-width: 800px) {
+  .navbar .container, section.home .container, section.skills .container, section.contact .container, section.portfolio .container {
+    width: 95vw;
+    padding-block: 2.5rem;
+  }
   section.home .container, section.skills .container, section.portfolio .container, section.contact .container {
     min-height: auto;
   }
@@ -364,6 +417,14 @@ p.contact-message {
   }
 }
 @media (min-width: 1200px) {
+  .navbar .container, section.home .container, section.skills .container, section.contact .container, section.portfolio .container {
+    width: 75vw;
+  }
+  section.contact .container-small {
+    max-width: 660px;
+  }
+}
+@media (min-width: 1400px) {
   section.contact .container-small {
     max-width: 660px;
   }
