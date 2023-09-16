@@ -173,7 +173,7 @@ section.home, section.skills, section.portfolio, section.contact {
   min-height: 100vh;
 }
 section.home .container, section.skills .container, section.portfolio .container, section.contact .container {
-  max-width: 95vw;
+  width: 95vw;
   margin-inline: auto;
   display: grid;
   min-height: 100dvh;
@@ -263,6 +263,12 @@ h4.skillset-title {
 }
 
 .skillset-list-item {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  grid-gap: 1rem;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
   margin-bottom: 1rem;
 }
 .skillset-list-item:last-child {
@@ -408,6 +414,7 @@ p.contact-message {
   }
   .skillset {
     margin-inline: 1rem;
+    padding: 2rem;
   }
   .portfolio-item-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -417,15 +424,12 @@ p.contact-message {
   }
 }
 @media (min-width: 1200px) {
-  .navbar .container, section.home .container, section.skills .container, section.contact .container, section.portfolio .container {
-    width: 75vw;
-  }
   section.contact .container-small {
     max-width: 660px;
   }
 }
-@media (min-width: 1400px) {
-  section.contact .container-small {
-    max-width: 660px;
+@media (min-width: 1600px) {
+  .navbar .container, section.home .container, section.skills .container, section.contact .container, section.portfolio .container {
+    width: 75vw;
   }
 }/*# sourceMappingURL=index.css.map */
