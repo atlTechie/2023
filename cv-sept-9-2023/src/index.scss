@@ -93,7 +93,7 @@ section > .container > p{
     padding-inline: 1rem;
     padding-block: 1rem;
     max-width: 1320px;
-  
+  margin-inline: auto;
     position: fixed;
     top:0;
     left: 0;
@@ -185,6 +185,10 @@ section.home, section.skills, section.contact{
 
 section.home{
     background: $platinum;
+    background-image: url('https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-repeat: none;
+    background-size: cover;
+    background-position: center;
     
     .container{
        max-width:1320px;
@@ -208,6 +212,9 @@ section.home .button-group{
 
 section.home .message-wrapper{
     align-self: center;
+    color: $platinum;
+    background: transparentize($color: $dark-blue ,$amount: .5);
+    padding: 1rem;
     h1{
         font-size: 2.25rem;
         line-height: 1.5;
