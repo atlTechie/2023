@@ -6,6 +6,7 @@ import Skills from "./sections/Skills";
 
 
 function App() {
+
   return (
     <div className="App">
       <header>
